@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<!-- http://www.barebones.com/support/develop/clm.html#Functions -->
+<dict>
+    <key>BBEditDocumentType</key>
+    <string>CodelessLanguageModule</string>
+    <key>BBLMColorsSyntax</key>
+    <true/>
+    <key>BBLMIsCaseSensitive</key>
+    <true/>
+    <key>BBLMKeywordList</key>
+    <array>
+        <string>__FILE__</string>
+        <string>abstract</string>
+        <string>array</string>
+        <string>as</string>
+        <string>autoescape</string>
+        <string>block</string>
+        <string>break</string>
+        <string>case</string>
+        <string>class</string>
+        <string>echo</string>
+        <string>else</string>
+        <string>elseif</string>
+        <string>embed</string>
+        <string>endautoescape</string>
+        <string>endblock</string>
+        <string>endembed</string>
+        <string>endfilter</string>
+        <string>endfor</string>
+        <string>endif</string>
+        <string>endjavascripts</string>
+        <string>endmacro</string>
+        <string>endsandbox</string>
+        <string>endset</string>
+        <string>endspaceless</string>
+        <string>endstopwatch</string>
+        <string>endtrans</string>
+        <string>endtranschoice</string>
+        <string>endverbatim</string>
+        <string>extends</string>
+        <string>false</string>
+        <string>filter</string>
+        <string>for</string>
+        <string>foreach</string>
+        <string>form_theme</string>
+        <string>function</string>
+        <string>if</string>
+        <string>ignore</string>
+        <string>implements</string>
+        <string>in</string>
+        <string>include</string>
+        <string>interface</string>
+        <string>is</string>
+        <string>javascripts</string>
+        <string>macro</string>
+        <string>missing</string>
+        <string>namespace</string>
+        <string>new</string>
+        <string>not</string>
+        <string>null</string>
+        <string>only</string>
+        <string>parent</string>
+        <string>private</string>
+        <string>protected</string>
+        <string>public</string>
+        <string>require_once</string>
+        <string>return</string>
+        <string>sandbox</string>
+        <string>set</string>
+        <string>spaceless</string>
+        <string>static</string>
+        <string>stopwatch</string>
+        <string>switch</string>
+        <string>throw</string>
+        <string>trans</string>
+        <string>trans_default_domain</string>
+        <string>transchoice</string>
+        <string>true</string>
+        <string>use</string>
+        <string>verbatim</string>
+        <string>with</string>
+    </array>
+    <key>BBLMLanguageCode</key>
+    <string>TWIG</string>
+    <key>BBLMLanguageDisplayName</key>
+    <string>Twig</string>
+    <key>BBLMScansFunctions</key>
+    <false/>
+    <key>BBLMFunctionScannerDoesFoldsToo</key>
+    <false/>
+    <key>BBLMLSuffixMap</key>
+    <array>
+        <dict>
+            <key>BBLMLanguageSuffix</key>
+            <string>.twig</string>
+        </dict>
+    </array>
+    <key>Language Features</key>
+    <dict>
+        <key>Close Block Comments</key>
+        <false/>
+        <key>Close Statement Blocks</key>
+        <false/>
+        <key>End-of-line Ends Strings 1</key>
+        <false/>
+        <key>End-of-line Ends Strings 2</key>
+        <false/>
+        <key>Escape Char in Strings 1</key>
+        <string>\</string>
+        <key>Escape Char in Strings 2</key>
+        <string>\</string>
+        <key>Identifier and Keyword Characters</key>
+        <string>$0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz-=&gt;&lt;</string>
+        <key>Open Block Comments</key>
+        <false/>
+        <key>Open Line Comments</key>
+        <false/>
+        <key>Open Statement Blocks</key>
+        <false/>
+        <key>Close Strings 1</key>
+        <false/>
+        <key>Close Strings 2</key>
+        <false/>
+        <key>Open Strings 1</key>
+        <false/>
+        <key>Open Strings 2</key>
+        <false/>
+        <key>Comment Pattern</key>
+        <string><![CDATA[
+(?x:
+    ((?<![\<"'])\#+(?!\>).*?$) |        (?# # Line comment but not <##> bbedit insertion marker)
+    ((?<![:])//.*?$) |                  (?# // Line comment but not :// urls)
+    (?s:(\{\#|\/\*+).+?(\#\}|\*\/)) |   (?# Block comment)
+    (<\!--\s*.+\s*-->)                  (?# Html comment)
+)]]></string>
+        <key>String Pattern</key>
+        <string><![CDATA[
+(?x:
+    (^|(?<![[:alpha:]]))('(?:[^'\r\n\\]|\\.)*'|"(?:[^"\n\r\\]|\\.)*") ($|(?![[:alpha:]]))
+)
+]]></string>
+<key>Function Pattern</key>
+<string><![CDATA[
+(?x:
+    (?P<leadspace>^(\t| )*)
+    (?P<function>
+        (public\s+|private\s+|protected\s+)function\s+
+        (?P<function_name>
+            [a-zA-Z0-9_]+
+        )
+        (?s:.+?)
+        (\r|\n)(?P=leadspace)\}
+    )
+)
+]]>
+</string>
+        <key>Keyword Pattern</key>
+        <string><![CDATA[
+(?x:
+    (\(|\)) |                           (?# parentheses)
+    (\|) |                              (?# filter operator)
+    (->) |                              (?# pointer)
+    (=>) |                              (?# array element)
+    (===? | !==?) |                     (?# equality operators)
+    \s(<|<=|>=|>)\s                     (?# comparison operators)
+)]]></string>
+    </dict>
+</dict>
+</plist>
